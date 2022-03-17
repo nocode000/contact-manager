@@ -12,10 +12,7 @@ export default function ContactCard(props) {
         <div className="header">{name}</div>
         <div>{email}</div>
       </div>
-      <i
-        className="trash alternate outline icon"
-        // onClick={() => props.clickHandler(id)}
-      ></i>
+      <i className="trash alternate outline icon" onClick={() => props.clickHandler(id)}></i>
     </div>
   );
 }

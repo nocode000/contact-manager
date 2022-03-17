@@ -4,13 +4,13 @@ import ContactList from './ContactList';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import './style.css';
-import { uuid } from 'uuidv4';
+import {v4 as uuidv4} from 'uuid'
 
 export default function App() {
   const [contacts, setContacts] = useState([]);
   const LOCAL_STORAGE_KEY = 'contacts';
   const addContactHandler = (contact) => {
-    setContacts([...contacts, { id: uuid(), ...contact }]);
+    setContacts([...contacts, {id:uuidv4(),...contact}]);
   };
   const deleteContact = (id) => {
     const newContactList = contacts.filter((contact) => {
@@ -31,7 +31,7 @@ export default function App() {
       <AddContact addContactHandler={addContactHandler} />
       <ContactList
         contacts={contacts}
-        // getId={deleteContact}
+        getId={deleteContact}
       />
     </div>
   );

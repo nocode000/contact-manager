@@ -9,9 +9,9 @@ export default function ContactList(props) {
     return (
       <ContactCard
         contact={contact}
-        // clickHandler={deleteContactHandler}
-        // key={contact.id}
-      ></ContactCard>
+        clickHandler={deleteContactHandler}
+        key={contact.id}
+      />
     );
   });
   return <div className="ui celled list">{renderList}</div>;

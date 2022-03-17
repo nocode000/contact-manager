@@ -1,4 +1,4 @@
-h1,
+/*h1,
 p {
   font-family: Lato;
 }
@@ -6,4 +6,35 @@ div {
   width: 80%;
   align-items: center;
   justify-self: center;
+}*/
+.main {
+  margin-top: 5em;
 }
+
+.center {
+  justify-content: center;
+  padding: 10px;
+}
+
+.ui.search input {
+  width: 100%;
+  border-radius: 0 !important;
+}
+
+.item {
+  padding: 15px 0px !important;
+}
+
+i.icon {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.right {
+  float: right !important;
+}
+.center-div {
+  text-align: center;
+}
+
