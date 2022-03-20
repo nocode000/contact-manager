@@ -1,20 +1,20 @@
-import { Component } from 'react';
-import React from 'react';
+import { Component } from "react";
+import React from "react";
 
 class AddContact extends Component {
   state = {
-    name: '',
-    email: '',
+    name: "",
+    email: "",
   };
   addHandler = (e) => {
     e.preventDefault();
-    if (this.state.name === '' && this.state.email === '') {
-      alert('All fields are mandetory');
+    if (this.state.name === "" || this.state.email === "") {
+      alert("All fields are mandetory");
       return;
     }
     this.props.addContactHandler(this.state);
-    this.setState({ name: '', email: '' });
-      this.props.history.push("/");
+    this.setState({ name: "", email: "" });
+    this.props.history.push("/");
   };
   render() {
     return (

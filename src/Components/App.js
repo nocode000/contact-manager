@@ -1,16 +1,17 @@
-import Header from './Header';
-import AddContact from './AddContact';
-import ContactList from './ContactList';
-import { useState, useEffect } from 'react';
-import React from 'react';
-import './style.css';
-import {v4 as uuidv4} from 'uuid'
-
+import Header from "./Header";
+import AddContact from "./AddContact";
+import ContactList from "./ContactList";
+import { useState, useEffect } from "react";
+import React from "react";
+import "./style.css";
+import { v4 as uuidv4 } from "uuid";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ContactDetail from "./ContactDetail";
 export default function App() {
   const [contacts, setContacts] = useState([]);
-  const LOCAL_STORAGE_KEY = 'contacts';
+  const LOCAL_STORAGE_KEY = "contacts";
   const addContactHandler = (contact) => {
-    setContacts([...contacts, {id:uuidv4(),...contact}]);
+    setContacts([...contacts, { id: uuidv4(), ...contact }]);
   };
   const deleteContact = (id) => {
     const newContactList = contacts.filter((contact) => {
@@ -27,12 +28,32 @@ export default function App() {
   }, [contacts]);
   return (
     <div className="ui container">
-      <Header />
-      <AddContact addContactHandler={addContactHandler} />
-      <ContactList
-        contacts={contacts}
-        getId={deleteContact}
-      />
+      <Router>
+        <Header />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={(props) => (
+              <ContactList
+                {...props}
+                contacts={contacts}
+                getId={deleteContact}
+              />
+            )}
+          />
+          <Route
+            path="/add"
+            exact
+            render={(props) => (
+              <AddContact {...props} addContactHandler={addContactHandler} />
+            )}
+          />
+          <Route path="/contact/:id" exact component={ContactDetail} />
+        </Switch>
+      </Router>
     </div>
   );
 }
+// ()=><AddContact addContactHandler={addContactHandler} />}
+// ()=><ContactList contacts={contacts} getId={deleteContact} />

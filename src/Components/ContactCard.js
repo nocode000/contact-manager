@@ -1,18 +1,25 @@
-import React from 'react';
-import './ContactCard.css';
+import React from "react";
+import "./ContactCard.css";
+import user from "../images/user.jpg";
+import { Link } from "react-router-dom";
 
 export default function ContactCard(props) {
   const { id, name, email } = props.contact;
-  const user =
-    'https://tse2.mm.bing.net/th?id=OIP.b2u7Fq7Jc5Gu_hIOxaTmogHaHa&pid=Api&P=0&w=168&h=168';
   return (
     <div className="item">
       <img className="ui avatar image" src={user} alt="user" />
       <div className="content">
-        <div className="header">{name}</div>
-        <div>{email}</div>
+        <Link
+          to={{ pathname: `contact/${id}`, state: { contact: props.contact } }}
+        >
+          <div className="header">{name}</div>
+          <div>{email}</div>
+        </Link>
       </div>
-      <i className="trash alternate outline icon" onClick={() => props.clickHandler(id)}></i>
+      <i
+        className="trash alternate outline icon"
+        onClick={() => props.clickHandler(id)}
+      ></i>
     </div>
   );
 }
