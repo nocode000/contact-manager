@@ -3,24 +3,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function ContactList(props) {
-  const deleteContactHandler = (id) => {
-    props.getId(id);
-  };
+  // const deleteContactHandler = (id) => {
+  //   props.getId(id);
+  // };
   // const contacts = [
   //   {
   //     id: 1,
   //     name: "janu",
   //     email: "janu@gmail.com",
   //   },
+  // clickHandler={deleteContactHandler}
   // ];
   const renderList = props.contacts.map((contact) => {
-    return (
-      <ContactCard
-        contact={contact}
-        clickHandler={deleteContactHandler}
-        key={contact.id}
-      />
-    );
+    return <ContactCard contact={contact} key={contact.id} />;
   });
   return (
     <div className="main">

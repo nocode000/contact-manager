@@ -2,6 +2,7 @@ import React from "react";
 import "./ContactCard.css";
 import user from "../images/user.jpg";
 import { Link } from "react-router-dom";
+import DeleteContact from "./DeleteContact";
 
 export default function ContactCard(props) {
   const { id, name, email } = props.contact;
@@ -16,10 +17,12 @@ export default function ContactCard(props) {
           <div>{email}</div>
         </Link>
       </div>
-      <i
-        className="trash alternate outline icon"
-        onClick={() => props.clickHandler(id)}
-      ></i>
+      <Link
+        to={{ pathname: `delete/${id}`, state: { contact: props.contact } }}
+      >
+        <i className="trash alternate outline icon"></i>
+      </Link>
     </div>
   );
 }
+// props.clickHandler(id)

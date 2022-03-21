@@ -3,7 +3,6 @@ import user from "../images/usercard.jpg";
 
 export default function ContactDetail(props) {
   const { name, email } = props.location.state.contact;
-  //console.log(props);
   return (
     <div className="main">
       <div className="ui card centered">

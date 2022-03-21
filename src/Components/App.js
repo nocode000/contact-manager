@@ -7,6 +7,7 @@ import "./style.css";
 import { v4 as uuidv4 } from "uuid";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ContactDetail from "./ContactDetail";
+import DeleteContact from "./DeleteContact";
 export default function App() {
   const [contacts, setContacts] = useState([]);
   const LOCAL_STORAGE_KEY = "contacts";
@@ -34,13 +35,7 @@ export default function App() {
           <Route
             path="/"
             exact
-            render={(props) => (
-              <ContactList
-                {...props}
-                contacts={contacts}
-                getId={deleteContact}
-              />
-            )}
+            render={(props) => <ContactList {...props} contacts={contacts} />}
           />
           <Route
             path="/add"
@@ -50,6 +45,13 @@ export default function App() {
             )}
           />
           <Route path="/contact/:id" exact component={ContactDetail} />
+          <Route
+            path="/delete/:id"
+            exact
+            render={(props) => (
+              <DeleteContact {...props} getId={deleteContact} />
+            )}
+          />
         </Switch>
       </Router>
     </div>
